@@ -7,6 +7,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "bundle.js",
+    publicPath: "/",
   },
   mode: "development",
   resolve: {
@@ -30,7 +31,7 @@ module.exports = {
         ],
       },
       {
-        test: /\.s[ac]ss$/i,
+        test: /\.(css|scss)$/,
         use: ["style-loader", "css-loader", "sass-loader"],
       },
     ],
@@ -44,14 +45,7 @@ module.exports = {
       filename: "[name].css",
     }),
   ],
-
-  // Development server configuration
-  // https://webpack.js.org/configuration/dev-server/
-  // https://webpack.js.org/guides/development/#using-webpack-dev-server
-  //configuracion para agregar el servidor de desarrollo
-  /*  devServer: {
-    allowedHosts: path.join(__dirname, "dist"),
-    compress: true,
-    port: 3005,
-  }, */
+  devServer: {
+    historyApiFallback: true,
+  },
 };
